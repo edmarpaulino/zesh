@@ -6,7 +6,7 @@
 /*   By: edpaulin </var/spool/mail/edpaulin>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 15:18:58 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/12/29 16:36:28 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/12/29 16:40:20 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,19 +45,16 @@ int	get_input(void)
 	char	*cmd;
 
 	cmd = readline(PS1);
-	while (cmd)
+	while (cmd && ft_strcmp(cmd, "exit") != 0)
 	{
-		if (ft_strcmp(cmd, "exit") == 0)
-		{
-			free(cmd);
-			break ;
-		}
-		else if (cmd[ft_strlen(cmd) - 1] == '\\')
+		if (cmd[ft_strlen(cmd) - 1] == '\\')
 			cmd = escape_new_line(cmd);
 		if (ft_strcmp(cmd, "\n") != 0)
 			ft_putendl_fd(cmd, 1);
 		free(cmd);
 		cmd = readline(PS1);
 	}
+	if (cmd)
+		free(cmd);
 	return (1);
 }
