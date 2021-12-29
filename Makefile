@@ -6,7 +6,7 @@
 #    By: edpaulin </var/spool/mail/edpaulin>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/29 15:18:39 by edpaulin          #+#    #+#              #
-#    Updated: 2021/12/29 15:18:41 by edpaulin         ###   ########.fr        #
+#    Updated: 2021/12/29 16:29:50 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRC_FILES = main.c \
 OBJ = obj
 OBJ_FILES = $(addprefix $(OBJ)/, $(SRC_FILES:.c=.o))
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -lreadline
 INC = -I inc -I libft/inc
 LIBFT = libft/libft.a
 MKD = mkdir -p $(@D)

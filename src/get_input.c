@@ -6,7 +6,7 @@
 /*   By: edpaulin </var/spool/mail/edpaulin>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 15:18:58 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/12/29 15:54:06 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/12/29 16:36:28 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,25 +18,24 @@ static char	*escape_new_line(char *cmd)
 	char	*new_line;
 	size_t	esc_pos;
 
-	esc_pos = (ft_strlen(cmd) - 2);
+	esc_pos = (ft_strlen(cmd) - 1);
 	while (cmd[esc_pos] == '\\')
 	{
 		if (esc_pos == 0)
 		{
 			free(cmd);
-			cmd = get_next_line(0);
-			esc_pos = (ft_strlen(cmd) - 2);
+			cmd = readline(PS2);
 		}
 		else
 		{
-			new_line = get_next_line(0);
+			new_line = readline(PS2);
 			tmp = ft_substr(cmd, 0, esc_pos);
 			free(cmd);
 			cmd = ft_strjoin(tmp, new_line);
-			esc_pos = (ft_strlen(cmd) - 2);
 			free(tmp);
 			free(new_line);
 		}
+		esc_pos = (ft_strlen(cmd) - 1);
 	}
 	return (cmd);
 }
@@ -45,22 +44,20 @@ int	get_input(void)
 {
 	char	*cmd;
 
-	print_prompt_1();
-	cmd = get_next_line(0);
+	cmd = readline(PS1);
 	while (cmd)
 	{
-		if (ft_strcmp(cmd, "exit\n") == 0)
+		if (ft_strcmp(cmd, "exit") == 0)
 		{
 			free(cmd);
 			break ;
 		}
-		else if (cmd[ft_strlen(cmd) - 2] == '\\')
+		else if (cmd[ft_strlen(cmd) - 1] == '\\')
 			cmd = escape_new_line(cmd);
 		if (ft_strcmp(cmd, "\n") != 0)
-			ft_putstr_fd(cmd, 1);
+			ft_putendl_fd(cmd, 1);
 		free(cmd);
-		print_prompt_1();
-		cmd = get_next_line(0);
+		cmd = readline(PS1);
 	}
 	return (1);
 }
