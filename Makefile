@@ -6,24 +6,32 @@
 #    By: edpaulin </var/spool/mail/edpaulin>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/29 15:18:39 by edpaulin          #+#    #+#              #
-#    Updated: 2021/12/29 16:29:50 by edpaulin         ###   ########.fr        #
+#    Updated: 2021/12/30 10:15:12 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = zesh
-SRC = src
-SRC_FILES = main.c \
-			get_input.c \
-			prompt.c
-OBJ = obj
-OBJ_FILES = $(addprefix $(OBJ)/, $(SRC_FILES:.c=.o))
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror -lreadline
-INC = -I inc -I libft/inc
-LIBFT = libft/libft.a
-MKD = mkdir -p $(@D)
-RM = rm -rf
-.DEFAULT_GOAL = all
+NAME 			=	zesh
+
+SRC 			=	src
+SRC_FILES 		=	main.c \
+					get_input.c \
+					prompt.c \
+					source.c
+
+OBJ				=	obj
+OBJ_FILES		=	$(addprefix $(OBJ)/, $(SRC_FILES:.c=.o))
+
+CC				=	gcc
+CFLAGS			=	-Wall -Wextra -Werror -lreadline
+
+INC				=	-I inc -I libft/inc
+
+LIBFT			=	libft/libft.a
+
+MKD				=	mkdir -p $(@D)
+RM				=	rm -rf
+
+.DEFAULT_GOAL	=	all
 
 all: $(NAME)
 
