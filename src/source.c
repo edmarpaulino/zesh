@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   source.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edpaulin </var/spool/mail/edpaulin>        +#+  +:+       +#+        */
+/*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 10:11:57 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/12/30 11:01:19 by edpaulin         ###   ########.fr       */
+/*   Updated: 2021/12/31 20:18:39 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	skip_white_spaces(t_source *src)
 	if (src == NULL || src->buffer == NULL)
 		return ;
 	c = peek_next_char(src);
-	while (c != EOS && (c == ' ' || c == '\t'))
+	while (c != EOS && ft_isspace(c))
 	{
 		get_next_char(src);
 		c = peek_next_char(src);

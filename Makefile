@@ -22,7 +22,8 @@ OBJ				=	obj
 OBJ_FILES		=	$(addprefix $(OBJ)/, $(SRC_FILES:.c=.o))
 
 CC				=	gcc
-CFLAGS			=	-Wall -Wextra -Werror -lreadline
+CFLAGS			=	-Wall -Wextra -Werror
+LIB				=	-lreadline
 
 INC				=	-I inc -I libft/inc
 
@@ -41,7 +42,7 @@ $(OBJ)/%.o: $(SRC)/%.c
 
 $(NAME): $(OBJ_FILES)
 	make all -C libft
-	$(CC) $(CFLAGS) $(INC) $(OBJ_FILES) $(LIBFT) -o $(NAME)
+	$(CC) $(CFLAGS) $(INC) $(OBJ_FILES) $(LIBFT) -o $(NAME) $(LIB)
 
 clean:
 	make clean -C libft
