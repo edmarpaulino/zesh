@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 10:56:28 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/01/02 12:11:11 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/01/02 18:14:50 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_token
 /* the special EOF token, which indicates the end of input */
 extern t_token	g_eof_token;
 
+t_token	*tokenize(t_source *src);
 void	free_token(t_token *tok);
 
 #endif
