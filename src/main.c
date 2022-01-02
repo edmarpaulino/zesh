@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 15:18:48 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/12/31 20:18:43 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/01/02 10:52:49 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,5 @@
 
 int	main(void)
 {
-	int	ret;
-
-	ret = get_input();
-	return (ret - 1);
+	return (get_input());
 }

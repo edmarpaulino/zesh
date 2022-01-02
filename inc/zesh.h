@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 15:18:43 by edpaulin          #+#    #+#             */
-/*   Updated: 2021/12/31 20:20:13 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/01/01 10:31:38 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define ZESH_H
 
 # include "libft.h"
+# include "source.h"
 # include <stdio.h>
 # include <readline/readline.h>
 # include <readline/history.h>

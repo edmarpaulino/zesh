@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/01 10:26:15 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/01/01 10:26:20 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/01/02 10:52:37 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,5 @@ int	get_input(void)
 	}
 	if (cmd)
 		free(cmd);
-	return (1);
+	return (0);
 }
