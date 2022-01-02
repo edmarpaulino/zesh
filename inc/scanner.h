@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zesh.h                                             :+:      :+:    :+:   */
+/*   scanner.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/29 15:18:43 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/01/02 10:57:20 by edpaulin         ###   ########.fr       */
+/*   Created: 2022/01/02 10:56:28 by edpaulin          #+#    #+#             */
+/*   Updated: 2022/01/02 12:11:11 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZESH_H
-# define ZESH_H
+#ifndef SCANNER_H
+# define SCANNER_H
 
-# include "libft.h"
-# include "source.h"
-# include "scanner.h"
-# include <stdio.h>
-# include <readline/readline.h>
-# include <readline/history.h>
-# include <errno.h>
+# include "zesh.h"
 
-# define PS1 "$ "
-# define PS2 "> "
+typedef struct s_token
+{
+	struct s_source	*src;
+	char			*text;
+	int				text_len;
+}				t_token;
 
-int		get_input(void);
-void	print_prompt_1(void);
-void	print_prompt_2(void);
+/* the special EOF token, which indicates the end of input */
+extern t_token	g_eof_token;
+
+void	free_token(t_token *tok);
 
 #endif

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: edpaulin </var/spool/mail/edpaulin>        +#+  +:+       +#+         #
+#    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/29 15:18:39 by edpaulin          #+#    #+#              #
-#    Updated: 2021/12/30 10:15:12 by edpaulin         ###   ########.fr        #
+#    Updated: 2022/01/02 12:14:35 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,9 @@ SRC 			=	src
 SRC_FILES 		=	main.c \
 					get_input.c \
 					prompt.c \
-					source.c
+					source.c \
+					scanner.c \
+					free_token.c
 
 OBJ				=	obj
 OBJ_FILES		=	$(addprefix $(OBJ)/, $(SRC_FILES:.c=.o))
