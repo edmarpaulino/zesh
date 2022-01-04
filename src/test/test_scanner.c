@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 15:21:24 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/01/04 15:22:22 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/01/04 18:05:12 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,15 @@ static void	print_next_token(t_source *src)
 
 	tok = tokenize(src);
 	print_separation_bar();
-	while (tok != &g_eof_token && src->cur_pos != src->buf_size)
+	while (tok != &g_eof_token)
 	{
 		printf("%s\n", tok->text);
+		free_token(tok);
 		tok = tokenize(src);
 	}
-	if (tok != &g_eof_token)
+	if (tok == &g_eof_token)
 		printf("end of token\n");
 	print_separation_bar();
-	free_token(tok);
 }
 
 static void	print_source(t_source *src)
@@ -48,6 +48,7 @@ int	test_scanner(void)
 	t_source	src;
 
 	src.buffer = ft_strdup("ls -la | cat /etc/passwd && $(wget www.test.com)");
+	// src.buffer = ft_strdup("ls");
 	if (src.buffer == NULL)
 	{
 		ft_putendl_fd("error: cannot create source buffer", 2);
@@ -58,5 +59,6 @@ int	test_scanner(void)
 	print_source(&src);
 	print_next_token(&src);
 	print_source(&src);
+	free(src.buffer);
 	return (0);
 }

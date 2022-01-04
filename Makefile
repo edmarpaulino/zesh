@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/29 15:18:39 by edpaulin          #+#    #+#              #
-#    Updated: 2022/01/04 15:43:08 by edpaulin         ###   ########.fr        #
+#    Updated: 2022/01/04 17:59:03 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,14 +16,18 @@ TEST			=	test
 TEST_FILES		=	test_scanner.c
 TEST_PATH		=	$(addprefix $(TEST)/, $(TEST_FILES))
 
+SCAN			=	token
+SCAN_FILES		=	scanner.c \
+					scanner_buffer.c
+SCAN_PATH		=	$(addprefix $(SCAN)/, $(SCAN_FILES))
+
 SRC 			=	./src
 SRC_FILES 		=	main.c \
 					get_input.c \
 					prompt.c \
 					source.c \
-					scanner.c \
-					free_token.c \
-					$(TEST_PATH)
+					$(TEST_PATH) \
+					$(SCAN_PATH)
 
 OBJ				=	./obj
 OBJ_FILES		=	$(addprefix $(OBJ)/, $(SRC_FILES:.c=.o))
