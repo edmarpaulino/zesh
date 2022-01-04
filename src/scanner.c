@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/02 10:56:30 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/01/02 12:13:46 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/01/04 14:41:47 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ static void	add_to_buffer(int c)
 		}
 		g_tok_buffer = tmp;
 		g_tok_bufsize *= 2;
-		g_tok_buffer[g_tok_bufindex] = c;
-		g_tok_bufindex++;
 	}
+	g_tok_buffer[g_tok_bufindex] = c;
+	g_tok_bufindex++;
 }
 
 static t_token	*create_token(char *str)
@@ -125,5 +125,7 @@ t_token	*tokenize(t_source *src)
 		return (&g_eof_token);
 	}
 	tok->src = src;
+	free(g_tok_buffer);
+	g_tok_buffer = NULL;
 	return (tok);
 }
