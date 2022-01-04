@@ -6,21 +6,26 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/29 15:18:39 by edpaulin          #+#    #+#              #
-#    Updated: 2022/01/02 12:14:35 by edpaulin         ###   ########.fr        #
+#    Updated: 2022/01/04 15:43:08 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 			=	zesh
 
-SRC 			=	src
+TEST			=	test
+TEST_FILES		=	test_scanner.c
+TEST_PATH		=	$(addprefix $(TEST)/, $(TEST_FILES))
+
+SRC 			=	./src
 SRC_FILES 		=	main.c \
 					get_input.c \
 					prompt.c \
 					source.c \
 					scanner.c \
-					free_token.c
+					free_token.c \
+					$(TEST_PATH)
 
-OBJ				=	obj
+OBJ				=	./obj
 OBJ_FILES		=	$(addprefix $(OBJ)/, $(SRC_FILES:.c=.o))
 
 CC				=	gcc
