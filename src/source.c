@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 10:11:57 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/01/03 20:18:43 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/01/04 17:01:03 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ char	get_next_char(t_source *src)
 		errno = ENODATA;
 		return (ERRCHAR);
 	}
-	else if (src->buffer[src->cur_pos + 1] == '\0' \
-			|| src->cur_pos == src->buf_size)
+	else if (src->cur_pos == src->buf_size)
 		return (EOS);
 	src->cur_pos++;
 	return (src->buffer[src->cur_pos]);
@@ -40,8 +39,7 @@ char	peek_next_char(t_source *src)
 		errno = ENODATA;
 		return (ERRCHAR);
 	}
-	else if (src->buffer[src->cur_pos + 1] == '\0' \
-			|| src->cur_pos == src->buf_size)
+	else if (src->cur_pos == src->buf_size)
 		return (EOS);
 	return (src->buffer[src->cur_pos + 1]);
 }
