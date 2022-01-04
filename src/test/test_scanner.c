@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 15:21:24 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/01/04 18:05:12 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/01/04 19:32:36 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	print_next_token(t_source *src)
 	print_separation_bar();
 	while (tok != &g_eof_token)
 	{
-		printf("%s\n", tok->text);
+		printf("token: |%s|\tsize: %d\n", tok->text, tok->text_len);
 		free_token(tok);
 		tok = tokenize(src);
 	}
@@ -48,7 +48,6 @@ int	test_scanner(void)
 	t_source	src;
 
 	src.buffer = ft_strdup("ls -la | cat /etc/passwd && $(wget www.test.com)");
-	// src.buffer = ft_strdup("ls");
 	if (src.buffer == NULL)
 	{
 		ft_putendl_fd("error: cannot create source buffer", 2);
