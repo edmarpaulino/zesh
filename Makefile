@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/29 15:18:39 by edpaulin          #+#    #+#              #
-#    Updated: 2022/01/05 15:03:01 by edpaulin         ###   ########.fr        #
+#    Updated: 2022/01/05 15:30:14 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,10 @@ NODE			=	node
 NODE_FILES		=	node.c
 NODE_PATH		=	$(addprefix $(NODE)/, $(NODE_FILES))
 
+EXECUTOR		=	executor
+EXECUTOR_FILES	=	executor.c
+EXECUTOR_PATH	=	$(addprefix $(EXECUTOR)/, $(EXECUTOR_FILES))
+
 SRC 			=	./src
 SRC_FILES 		=	main.c \
 					get_input.c \
@@ -37,7 +41,8 @@ SRC_FILES 		=	main.c \
 					$(TEST_PATH) \
 					$(SCAN_PATH) \
 					$(PARSER_PATH) \
-					$(NODE_PATH)
+					$(NODE_PATH) \
+					$(EXECUTOR_PATH)
 
 OBJ				=	./obj
 OBJ_FILES		=	$(addprefix $(OBJ)/, $(SRC_FILES:.c=.o))

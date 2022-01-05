@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 15:03:56 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/01/05 15:23:08 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/01/05 18:03:11 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,25 @@ t_node	*parse_simple_command(t_token *tok)
 			break ;
 	}
 	return (cmd);
+}
+
+int	parse_and_execute(t_source *src)
+{
+	t_token	*tok;
+	t_node	*cmd;
+
+	skip_white_spaces(src);
+	tok = tokenize(src);
+	if (tok == &g_eof_token)
+		return (0);
+	while (tok && tok != &g_eof_token)
+	{
+		cmd = parse_simple_command(tok);
+		if (cmd == NULL)
+			break ;
+		do_simple_command(cmd);
+		free_node_tree(cmd);
+		tok = tokenize(src);
+	}
+	return (1);
 }

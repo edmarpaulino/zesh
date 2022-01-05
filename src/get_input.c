@@ -6,11 +6,12 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/01 10:26:15 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/01/02 10:52:37 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/01/05 18:06:54 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "zesh.h"
+#include "parser.h"
 
 static char	*escape_new_line(char *cmd)
 {
@@ -38,6 +39,31 @@ static char	*escape_new_line(char *cmd)
 		esc_pos = (ft_strlen(cmd) - 1);
 	}
 	return (cmd);
+}
+
+int	exec_input(void)
+{
+	char		*cmd;
+	t_source	src;
+
+	cmd = readline(PS1);
+	while (cmd && ft_strcmp(cmd, "exit") != 0)
+	{
+		if (cmd[ft_strlen(cmd) - 1] == '\\')
+			cmd = escape_new_line(cmd);
+		if (ft_strcmp(cmd, "\n") != 0)
+		{
+			src.buffer = cmd;
+			src.buf_size = ft_strlen(src.buffer);
+			src.cur_pos = -1;
+			parse_and_execute(&src);
+		}
+		free(cmd);
+		cmd = readline(PS1);
+	}
+	if (cmd)
+		free(cmd);
+	return (0);
 }
 
 int	get_input(void)

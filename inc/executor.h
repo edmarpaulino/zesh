@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.h                                           :+:      :+:    :+:   */
+/*   executor.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/05 14:16:51 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/01/05 18:02:29 by edpaulin         ###   ########.fr       */
+/*   Created: 2022/01/05 15:28:19 by edpaulin          #+#    #+#             */
+/*   Updated: 2022/01/05 18:02:46 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSER_H
-# define PARSER_H
+#ifndef EXECUTOR_H
+# define EXECUTOR_H
 
-# include "zesh.h"
-# include "scanner.h"
-# include "source.h"
-# include "parser.h"
 # include "node.h"
-# include "executor.h"
+# include "zesh.h"
 
-t_node	*parse_simple_command(t_token *tok);
-int		parse_and_execute(t_source *src);
+# define MAX_ARGS 255
+
+int	do_simple_command(t_node *node);
+int	do_exec_cmd(char **argv);
+char	*search_path(char *file);
+char	*ft_get_cmd_path(char **system_path, char *cmd_name);
 
 #endif
