@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 14:21:06 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/01/05 15:01:20 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/01/05 15:13:57 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,10 @@ typedef struct s_node
 	struct s_node	*next_simbling;		//	if child, pointer to next
 	struct s_node	*prev_simbling;		//	if child, pointer to previous
 }				t_node;
+
+t_node	*new_node(t_node_type type);
+void	add_child_node(t_node *parent, t_node *child);
+void	set_node_val_str(t_node *node, char *val);
+void	free_node_tree(t_node *node);
 
 #endif
