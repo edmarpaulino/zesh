@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/29 15:18:39 by edpaulin          #+#    #+#              #
-#    Updated: 2022/01/05 14:14:31 by edpaulin         ###   ########.fr        #
+#    Updated: 2022/01/05 15:03:01 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,13 +21,23 @@ SCAN_FILES		=	scanner.c \
 					scanner_buffer.c
 SCAN_PATH		=	$(addprefix $(SCAN)/, $(SCAN_FILES))
 
+PARSER			=	parser
+PARSER_FILES	=	parser.c
+PARSER_PATH		=	$(addprefix $(PARSER)/, $(PARSER_FILES))
+
+NODE			=	node
+NODE_FILES		=	node.c
+NODE_PATH		=	$(addprefix $(NODE)/, $(NODE_FILES))
+
 SRC 			=	./src
 SRC_FILES 		=	main.c \
 					get_input.c \
 					prompt.c \
 					source.c \
 					$(TEST_PATH) \
-					$(SCAN_PATH)
+					$(SCAN_PATH) \
+					$(PARSER_PATH) \
+					$(NODE_PATH)
 
 OBJ				=	./obj
 OBJ_FILES		=	$(addprefix $(OBJ)/, $(SRC_FILES:.c=.o))
