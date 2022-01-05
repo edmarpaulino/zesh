@@ -6,7 +6,7 @@
 #    By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/29 15:18:39 by edpaulin          #+#    #+#              #
-#    Updated: 2022/01/04 17:59:03 by edpaulin         ###   ########.fr        #
+#    Updated: 2022/01/05 14:14:31 by edpaulin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ TEST			=	test
 TEST_FILES		=	test_scanner.c
 TEST_PATH		=	$(addprefix $(TEST)/, $(TEST_FILES))
 
-SCAN			=	token
+SCAN			=	scanner
 SCAN_FILES		=	scanner.c \
 					scanner_buffer.c
 SCAN_PATH		=	$(addprefix $(SCAN)/, $(SCAN_FILES))
