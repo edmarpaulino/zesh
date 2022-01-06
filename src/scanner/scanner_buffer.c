@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 17:52:56 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/01/04 17:56:55 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/01/06 16:49:36 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,29 @@ int	fill_token(t_source *src, t_token_buffer *tok_buffer)
 		return (-1);
 	while (nc != EOS)
 	{
-		if (nc == ' ' || nc == '\t')
+		if (nc == '\"')
+		{
+			nc = get_next_char(src);
+			while (nc != '\"' && src->cur_pos < src->buf_size)
+			{
+				add_to_buffer(tok_buffer, nc);
+				nc = get_next_char(src);
+			}
+			if (src->cur_pos == src->buf_size)
+				return (-1);
+		}
+		else if (nc == '\'' && src->cur_pos < src->buf_size)
+		{
+			nc = get_next_char(src);
+			while (nc != '\'')
+			{
+				add_to_buffer(tok_buffer, nc);
+				nc = get_next_char(src);
+			}
+			if (src->cur_pos == src->buf_size)
+				return (-1);
+		}
+		else if (nc == ' ' || nc == '\t')
 		{
 			if (tok_buffer->index > 0)
 				break ;
