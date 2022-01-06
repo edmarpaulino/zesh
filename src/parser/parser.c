@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 15:03:56 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/01/06 14:49:34 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/01/06 16:07:57 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	parse_and_execute(t_source *src)
 {
 	t_node	*cmd;
 
-	cmd = parser(src);
+	cmd = parse_simple_command(src);
 	if (cmd == NULL)
 		return (-1);
 	do_simple_command(cmd);
