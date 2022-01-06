@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 15:28:54 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/01/05 17:54:13 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/01/06 14:50:50 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ int	do_simple_command(t_node *node)
 	char	**argv;
 	int		argc;
 	char	*str;
-	int 	child_pid;
+	int		child_pid;
 
 	if (node == NULL)
 		return (0);

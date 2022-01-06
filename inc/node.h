@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 14:21:06 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/01/05 15:13:57 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/01/06 14:53:42 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,32 @@
 
 # include "zesh.h"
 
+// NODE_COMMAND,	//	simple command
+// NODE_VAR,		//	variable name (or simply a word)
 typedef enum e_node_type
 {
-	NODE_COMMAND,	//	simple command
-	NODE_VAR,		//	variable name (or simply a word)
+	NODE_COMMAND,
+	NODE_VAR,
 }			t_node_type;
 
+// VAL_SINT,		//	signed int
+// VAL_UINT,		//	unsigned int
+// VAL_SLLONG,		//	signed long long
+// VAL_ULLONG,		//	unsigned long long
+// VAL_SFLOAT,		//	floating point
+// VAL_LDOUBLE,		//	long double
+// VAL_CHR,			//	char
+// VAL_STR,			//	str (char pointer)
 typedef enum e_val_type
 {
-	VAL_SINT,		//	signed int
-	VAL_UINT,		//	unsigned int
-	VAL_SLLONG,		//	signed long long
-	VAL_ULLONG,		//	unsigned long long
-	VAL_SFLOAT,		//	floating point
-	VAL_LDOUBLE,	//	long double
-	VAL_CHR,		//	char
-	VAL_STR,		//	str (char pointer)
+	VAL_SINT,
+	VAL_UINT,
+	VAL_SLLONG,
+	VAL_ULLONG,
+	VAL_SFLOAT,
+	VAL_LDOUBLE,
+	VAL_CHR,
+	VAL_STR,
 }			t_val_type;
 
 typedef union u_symble_val
@@ -45,15 +55,22 @@ typedef union u_symble_val
 	char				*str;
 }			t_symble_val;
 
+// type;				//	type of this node
+// val_type;			//	type of this node's value field
+// val;					//	value of this node
+// children;			//	number of child nodes
+// *first_child;		//	first child node
+// *next_simbling;		//	if child, pointer to next
+// *prev_simbling;		//	if child, pointer to previous
 typedef struct s_node
 {
-	t_node_type		type;				//	type of this node
-	t_val_type		val_type;			//	type of this node's value field
-	t_symble_val	val;				//	value of this node
-	int				children;			//	number of child nodes
-	struct s_node	*first_child;		//	first child node
-	struct s_node	*next_simbling;		//	if child, pointer to next
-	struct s_node	*prev_simbling;		//	if child, pointer to previous
+	t_node_type		type;
+	t_val_type		val_type;
+	t_symble_val	val;
+	int				children;
+	struct s_node	*first_child;
+	struct s_node	*next_simbling;
+	struct s_node	*prev_simbling;
 }				t_node;
 
 t_node	*new_node(t_node_type type);

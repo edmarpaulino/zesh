@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 14:20:48 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/01/05 15:00:38 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/01/06 14:44:04 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	add_child_node(t_node *parent, t_node *child)
 		parent->first_child = child;
 	else
 	{
+		simbling = parent->first_child;
 		while (simbling->next_simbling)
 			simbling = simbling->next_simbling;
 		simbling->next_simbling = child;
