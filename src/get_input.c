@@ -6,12 +6,20 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/01 10:26:15 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/01/05 18:06:54 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/01/08 20:49:51 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "zesh.h"
 #include "parser.h"
+
+static void	print_dir(void)
+{
+	char	cwd[1024];
+
+	getcwd(cwd, sizeof(cwd));
+	printf("\n%s", cwd);
+}
 
 static char	*escape_new_line(char *cmd)
 {
@@ -46,6 +54,7 @@ int	exec_input(void)
 	char		*cmd;
 	t_source	src;
 
+	print_dir();
 	cmd = readline(PS1);
 	while (cmd && ft_strcmp(cmd, "exit") != 0)
 	{
@@ -53,12 +62,15 @@ int	exec_input(void)
 			cmd = escape_new_line(cmd);
 		if (ft_strcmp(cmd, "\n") != 0)
 		{
+			if (ft_strlen(cmd) != 0)
+				add_history(cmd);
 			src.buffer = cmd;
 			src.buf_size = ft_strlen(src.buffer);
 			src.cur_pos = -1;
 			parse_and_execute(&src);
 		}
 		free(cmd);
+		print_dir();
 		cmd = readline(PS1);
 	}
 	if (cmd)

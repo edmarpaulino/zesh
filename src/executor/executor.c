@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 15:28:54 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/01/06 14:50:50 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/01/08 20:42:49 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,24 +127,32 @@ int	do_simple_command(t_node *node)
 		child = child->next_simbling;
 	}
 	argv[argc] = NULL;
-	child_pid = fork();
-	if (child_pid == 0)
+	if (ft_strcmp(argv[0], "cd") == 0)
 	{
-		do_exec_cmd(argv);
-		perror("failed to execute the command");
-		if (errno == ENOEXEC)
-			exit(126);
-		else if (errno == ENOENT)
-			exit(127);
-		else
-			exit(EXIT_FAILURE);
-	}
-	else if (child_pid < 0)
-	{
-		perror("fail to fork the process");
+		chdir(argv[1]);
 		return (0);
 	}
-	waitpid(child_pid, NULL, 0);
-	ft_clear_split(argv);
-	return (1);
+	else
+	{
+		child_pid = fork();
+		if (child_pid == 0)
+		{
+			do_exec_cmd(argv);
+			perror("failed to execute the command");
+			if (errno == ENOEXEC)
+				exit(126);
+			else if (errno == ENOENT)
+				exit(127);
+			else
+				exit(EXIT_FAILURE);
+		}
+		else if (child_pid < 0)
+		{
+			perror("fail to fork the process");
+			return (0);
+		}
+		waitpid(child_pid, NULL, 0);
+		ft_clear_split(argv);
+		return (1);
+	}
 }
