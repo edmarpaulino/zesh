@@ -6,7 +6,7 @@
 /*   By: edpaulin <edpaulin@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/01 10:26:15 by edpaulin          #+#    #+#             */
-/*   Updated: 2022/01/08 20:49:51 by edpaulin         ###   ########.fr       */
+/*   Updated: 2022/01/08 20:56:07 by edpaulin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	print_dir(void)
 	char	cwd[1024];
 
 	getcwd(cwd, sizeof(cwd));
-	printf("\n%s", cwd);
+	printf("%s", cwd);
 }
 
 static char	*escape_new_line(char *cmd)
